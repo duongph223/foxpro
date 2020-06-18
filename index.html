@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>َAnimated Login Form</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #34495e;
+        }
+
+        .box {
+            width: 300px;
+            padding: 40px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #191919;
+            text-align: center;
+        }
+
+        .box h1 {
+            color: white;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .box input[type = "text"], .box input[type = "password"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 14px 10px;
+            width: 200px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+        }
+
+        .box input[type = "text"]:focus, .box input[type = "password"]:focus {
+            width: 280px;
+            border-color: #2ecc71;
+        }
+
+        .box input[type = "submit"] {
+            border: 0;
+            background: none;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            border: 2px solid #2ecc71;
+            padding: 14px 40px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
+
+        .box input[type = "submit"]:hover {
+            background: #2ecc71;
+        }
+
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBWIbQ2ZCBzO6sOzk0Vs6r4Ixh6us_ACCY",
+            authDomain: "lailaduongdayy.firebaseapp.com",
+            databaseURL: "https://lailaduongdayy.firebaseio.com",
+            projectId: "lailaduongdayy",
+            storageBucket: "lailaduongdayy.appspot.com",
+            messagingSenderId: "693135909824",
+            appId: "1:693135909824:web:adc144d11c1e6903b0de25",
+            measurementId: "G-CG2VS7S9LD"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        const db = firebase.firestore();
+
+        const users = db.collection('users');
+
+        function checkIn() {
+            db.collection("users").doc(document.getElementById('user').value).update({
+                "age": "1"
+            })
+            alert("OK");
+        };
+
+        function checkOut() {
+            db.collection("users").doc(document.getElementById('user').value).update({
+                "age": "2"
+            })
+            alert("OK");
+        };
+
+    </script>
+
+</head>
+<body>
+
+<div class="box">
+    <input type="text" name="" placeholder="Username" id="user">
+    <input onclick="checkIn()" type="submit" name="" value="CHECK IN">
+    <input onclick="checkOut()" type="submit" name="" value="CHECK OUT">
+</div>
+
+
+</body>
+</html>
